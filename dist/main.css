@@ -13,7 +13,7 @@
    background-color: #004980;
    width: 100%;
    height: 100vh;
-   padding: 41px 26px;
+   position: relative;
 }
 
 .app__popup {
@@ -23,17 +23,34 @@
    height: 100vh;
 }
 
+.app__popup_final {
+   position: absolute;
+   top: 0;
+   left: 32%;
+}
+
+.app__fon {
+   position: absolute;
+   opacity: 0.9;
+   background: #004980;
+   top: 0;
+   z-index: 0;
+   width: 100%;
+   height: 100vh;
+}
+
 .app__game {
    height: 100vh;
    display: flex;
    flex-direction: column;
+   padding: 41px 26px;
 }
 
 .popup {
    width: 480px;
    border-radius: 12px;
    background: #c2f5ff;
-   padding: 50px 70px;
+   padding: 10px 70px 50px;
 }
 
 .popup__container {
@@ -48,10 +65,33 @@
    font-size: 40px;
    line-height: 48px;
    margin-bottom: 48px;
+   margin-top: 40px;
 }
 
 .popup__content-difficulty {
    margin-bottom: 67px;
+}
+
+.popup-image {
+   margin-bottom: 9px;
+   margin-top: 16px;
+}
+
+.popup__time-title {
+   font-size: 24px;
+   line-height: 32px;
+   margin-bottom: 10px;
+}
+
+.popup__time-text {
+   font-size: 64px;
+   line-height: 72px;
+   margin-bottom: 40px;
+}
+
+.popup__title_final {
+   margin-bottom: 28px;
+   margin-top: 0;
 }
 
 .difficulty__container {
@@ -97,6 +137,13 @@
    transform: scale(1.1);
 }
 
+.header__button {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
 .button {
    display: flex;
    width: 246px;
@@ -115,7 +162,12 @@
    background: #5c9100;
 }
 
-@media (width <= 510px) {
+.button__difficulty {
+   margin-top: 20px;
+   width: 300px;
+}
+
+@media (width <= 540px) {
    .popup {
       width: 300px;
       padding: 30px 50px;
@@ -144,6 +196,46 @@
       font-size: 44px;
       line-height: 52px;
    }
+
+   .difficulty__block_checked {
+      color: #fff;
+      background: #7ac100;
+      transform: scale(1.1);
+   }
+
+   .button {
+      width: 200px;
+      height: 35px;
+      font-size: 18px;
+      line-height: 32px;
+   }
+
+   .button:hover {
+      background: #5c9100;
+   }
+
+   .button__difficulty {
+      margin-top: 20px;
+      width: 250px;
+   }
+
+   span.time__min,
+   span.time__sec,
+   span.time__point {
+      font-size: 48px;
+   }
+}
+
+@media (width <= 540px) {
+   .header {
+      flex-direction: column;
+   }
+
+   .game.game__difficult_2 {
+      grid-template-columns: repeat(3, minmax(30px, 95px));
+      grid-template-rows: repeat(4, minmax(auto, 133px));
+      grid-auto-flow: row;
+   }
 }
 
 .header {
@@ -151,9 +243,6 @@
    justify-content: space-between;
    align-items: center;
    margin-bottom: 48px;
-}
-
-.header__time {
 }
 
 .time__name {
@@ -164,7 +253,7 @@
 }
 
 .time__min,
-.time__sek,
+.time__sec,
 .time__point {
    color: #fff;
    font-size: 64px;
@@ -174,7 +263,7 @@
 }
 
 .time__min::before,
-.time__sek::before {
+.time__sec::before {
    position: absolute;
    color: #fff;
    font-size: 16px;
@@ -188,8 +277,8 @@
    content: "min";
 }
 
-.time__sek::before {
-   content: "sek";
+.time__sec::before {
+   content: "sec";
 }
 
 .game {
@@ -202,6 +291,7 @@
 
 .game__card {
    position: relative;
+   perspective: 1000px;
 }
 
 .game__card img {
@@ -211,19 +301,33 @@
    height: 100%;
    top: 0;
    left: 0;
+   transition: all 0.3s ease 0s;
+   backface-visibility: hidden;
+}
+
+.card__open {
+   transform: rotateY(180deg);
+}
+
+.card__shirt_rotate {
+   transform: rotateY(180deg);
+}
+
+.card__open_rotate {
+   transform: rotateY(360deg);
 }
 
 .game__difficult_1 {
-   grid-template: repeat(3, minmax(auto, 133px)) / repeat(4, minmax(30px, 95px));
+   grid-template: repeat(2, minmax(auto, 133px)) / repeat(3, minmax(30px, 95px));
 }
 
 .game__difficult_2 {
-   grid-template: repeat(3, minmax(auto, 133px)) / repeat(6, minmax(30px, 95px));
+   grid-template: repeat(3, minmax(auto, 133px)) / repeat(4, minmax(30px, 95px));
    grid-auto-flow: row;
 }
 
 .game__difficult_3 {
-   grid-template: repeat(4, minmax(auto, 133px)) / repeat(9, minmax(30px, 95px));
+   grid-template: repeat(3, minmax(auto, 133px)) / repeat(6, minmax(30px, 95px));
 }
 
 .game__card_open {
@@ -235,6 +339,22 @@
 
 .hidden {
    display: none;
+}
+
+.disabled,
+.disabled:hover {
+   background: #9b9b9a;
+   cursor: auto;
+}
+
+.game__disabled {
+   pointer-events: none;
+}
+
+.subtitle {
+   text-align: center;
+   font-size: 28px;
+   color: white;
 }
 
 /*!********************************************************************!*\
