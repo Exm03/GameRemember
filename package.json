@@ -14,14 +14,14 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/JuliaMatsievich/game-memory.git"
+      "url": "git+https://github.com/Exm03/GameRemember.git"
    },
    "author": "",
    "license": "ISC",
    "bugs": {
-      "url": "https://github.com/JuliaMatsievich/game-memory/issues"
+      "url": "https://github.com/Exm03/GameRemember/issues"
    },
-   "homepage": "https://github.com/JuliaMatsievich/game-memory#readme",
+   "homepage": "https://github.com/Exm03/GameRemember#readme",
    "devDependencies": {
       "@types/jest": "^29.5.3",
       "copy-webpack-plugin": "^11.0.0",
